@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div><p>当前用户:{{ current_user.nickname }}</p>
+<p>当前is_authenticated {{ current_user.is_authenticated }}</p>
+<p>当前active {{ current_user.is_active }}</p>
+<p>当前anonyous {{ current_user.is_anonymous }}</p>
+<p>当前fresh：{{ fresh }}</p>
+    <p>id {{ current_user.get_id() }}</p></div>
+<div class="page-header">
+<h1>Login</h1>
+</div>
+<div class="col-md-4">
+<form method="POST" action="{{ url_for('main.api_login') }}">
+{{ form.hidden_tag() }}
+{{ form.nickname }}
+{{ form.password }}{{ form.remember_me }}
+{{ form.submit() }}
+</form>
+</div>
+</body>
+</html>
