@@ -128,3 +128,71 @@ class Model_SimilarTrend(db.Model):
     parameters = db.Column(db.BLOB)
     similar_stocks = db.Column(db.BLOB)
     activitybytrend = db.Column(db.BLOB)
+
+
+class Model_CorrelationShortTerm(db.Model):
+    __tablename__ = 'model_correlationshortterm'
+    ts_code = db.Column(db.String(255), primary_key=True)
+    pt = db.Column(db.String(255), primary_key=True)
+    parameters = db.Column(db.BLOB)
+    corr_stocks = db.Column(db.BLOB)
+    trendline = db.Column(db.BLOB)
+
+
+class Model_StateTransition(db.Model):
+    __tablename__ = 'model_statetransition'
+    ts_code = db.Column(db.String(255), primary_key=True)
+    pt = db.Column(db.String(255), primary_key=True)
+    s_up = db.Column(db.Float)
+    s_blc = db.Column(db.Float)
+    s_down = db.Column(db.Float)
+    l_up = db.Column(db.Float)
+    l_blc = db.Column(db.Float)
+    l_down = db.Column(db.Float)
+    parameters = db.Column(db.BLOB)
+
+
+class Model_AssociateRule(db.Model):
+    __tablename__ = 'model_ associaterule'
+    ts_code_x = db.Column(db.String(255), primary_key=True)
+    ts_code_y = db.Column(db.String(255))
+    pt = db.Column(db.String(255), primary_key=True)
+    up_rate = db.Column(db.Float)
+    bic_rate = db.Column(db.Float)
+    down_rate = db.Column(db.Float)
+    parameters = db.Column(db.BLOB)
+
+
+class Model_AmplitudePortfolio(db.Model):
+    __tablename__ = ' model_amplitudeportfolio'
+    ts_code = db.Column(db.String(255), primary_key=True)
+    pt = db.Column(db.String(255), primary_key=True)
+    index = db.Column(db.String(255))
+    parameters = db.Column(db.BLOB)
+    group_rate = db.Column(db.BLOB)
+
+
+class Model_AmplitudeCorrelation(db.Model):
+    __tablename__ = ' model_amplitudecorrelation'
+    ts_code = db.Column(db.String(255), primary_key=True)
+    pt = db.Column(db.String(255), primary_key=True)
+    index = db.Column(db.String(255))
+    support = db.Column(db.Float)
+    parameters = db.Column(db.BLOB)
+    group_rate = db.Column(db.BLOB)
+
+
+class Model_AmplitudeStatistic(db.Model):
+    __tablename__ = ' model_amplitudestatistic'
+    ts_code = db.Column(db.String(255), primary_key=True)
+    pt = db.Column(db.String(255), primary_key=True)
+    close = db.Column(db.Float)
+    down_rate = db.Column(db.Float)
+    down_rank = db.Column(db.Float)
+    up_rate = db.Column(db.Float)
+    up_rank = db.Column(db.Float)
+    all_rank = db.Column(db.Float)
+    parameters = db.Column(db.BLOB)
+
+
+
