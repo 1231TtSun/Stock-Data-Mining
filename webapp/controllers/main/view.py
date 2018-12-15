@@ -28,3 +28,7 @@ def register():
 def index():
     print(current_user)
     return render_template('main/index.html',fresh=login_fresh())
+
+@main.route('database',methods=['GET'])
+def database():
+    return render_template('main/database.html')
