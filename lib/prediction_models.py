@@ -130,6 +130,18 @@ class TrendForecast(object):
             return {"one": [one_up, one_blc, one_down], "two": [two_up, two_blc, two_down],
                     "three": [three_up, three_blc, three_down]}
 
+    def getSimilarStocks(self):
+        if self.__error__:
+            return None
+        else:
+            result=[]
+            for index, row in self.__similar_stock__.iterrows():
+                stock = row['ts_code']
+                time = row['time_point']
+                distance=row['distance']
+                result.append({"ts_code":stock,"time_point":time,"distance":distance})
+            return result
+
 
 class SimilarityShortTerm(object):
     ts_code = None
@@ -402,6 +414,17 @@ class StockActivity(object):
         else:
             return self.__activity__
 
+    def getSimilarStocks(self):
+        if self.__error__:
+            return None
+        else:
+            result=[]
+            for index, row in self.__similar_stock__.iterrows():
+                stock = row['ts_code']
+                distance=row['distance']
+                result.append({"ts_code":stock,"distance":distance})
+            return result
+
 
 class SimilarTrend(object):
     ts_code = None
@@ -476,3 +499,14 @@ class SimilarTrend(object):
             return None
         else:
             return self.__activity__
+
+    def getSimilarStocks(self):
+        if self.__error__:
+            return None
+        else:
+            result=[]
+            for index, row in self.__similar_stock__.iterrows():
+                stock = row['ts_code']
+                distance=row['distance']
+                result.append({"ts_code":stock,"distance":distance})
+            return result
