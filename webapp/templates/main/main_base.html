@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>魔法金融-股票数据挖掘</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta content="魔法金融-股票数据挖掘" name="description" />
+        <meta content="Coderthemes" name="author" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+        <!-- App favicon -->
+        <link rel="shortcut icon" href="{{ url_for("static",filename="images/favicon.ico") }}">
+
+        <!-- Icons css -->
+        <link href="{{ url_for("static",filename="libs/@mdi/font/css/materialdesignicons.min.css") }}" rel="stylesheet" type="text/css" />
+        <link href="{{ url_for("static",filename="libs/dripicons/webfont/webfont.css") }}" rel="stylesheet" type="text/css" />
+        <link href="{{ url_for("static",filename="libs/simple-line-icons/css/simple-line-icons.css") }}" rel="stylesheet" type="text/css" />
+
+        <!-- App css -->
+        <!-- build:css -->
+        <link href="{{ url_for("static",filename="css/app.css") }}" rel="stylesheet" type="text/css" />
+        <!-- endbuild -->
+
+    </head>
+
+    <body class="bg-account-pages">
+
+        <!-- Content -->
+        {% block content %}
+        {% endblock %}
+        <!-- END Content -->
+
+
+        <!-- jQuery  -->
+        <script src="{{ url_for("static",filename="libs/jquery/jquery.min.js") }}"></script>
+        <script src="{{ url_for("static",filename="libs/bootstrap/js/bootstrap.bundle.min.js") }}"></script>
+        <script src="{{ url_for("static",filename="libs/jquery-slimscroll/jquery.slimscroll.min.js") }}"></script>
+
+        <!-- App js -->
+        <script src="{{ url_for("static",filename="js/jquery.core.js") }}"></script>
+        <script src="{{ url_for("static",filename="js/jquery.app.js") }}"></script>
+
+    </body>
+</html>

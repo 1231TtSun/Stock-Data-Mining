@@ -8,191 +8,144 @@ db = SQLAlchemy()
 class User(UserMixin, db.Model):
     __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True)
-    nickname = db.Column(db.String(255))
-    password = db.Column(db.String(255))
-    # @property
-    # def password(self):
-    #     raise AttributeError('password is not a readable attribute')
-    # @password.setter
-    # def password(self, password):
-    #     # self.password = generate_password_hash(password)
-    #     self.password=password
-    # def verify_password(self, password):
-    #     # return check_password_hash(self.password, password)
-    #     if self.password==password:
-    #         return True
-    #     else:
-    #         return False
+    emailaddress=db.Column(db.String(255))
+    username = db.Column(db.String(255))
+    password_hash=db.Column(db.String(255))
+    avatar=db.Column(db.String(255))
+    @property
+    def password(self):
+        raise AttributeError('password is not a readable attribute')
+    @password.setter
+    def password(self, password):
+        self.password_hash = generate_password_hash(password)
+    def verify_password(self, password):
+        return check_password_hash(self.password_hash, password)
 
 
-class DB_ENV(db.Model):
-    __tablename__ = 'db_env'
-    key = db.Column(db.String(255), primary_key=True)
-    value = db.Column(db.String(255))
+class gpgz_hypjsyl(db.Model):
+    riqi=db.Column(db.String(255))
+    gupiao=db.Column(db.String(255))
+    gupiaope=db.Column(db.String(255))
+    zhengjianhuipe=db.Column(db.String(255))
+    guozhengpe=db.Column(db.String(255))
+
+class gpgz_lsxssy(db.Model):
+    riqi=db.Column(db.String(255))
+    gupiao=db.Column(db.String(255))
+    gujia=db.Column(db.String(255))
+    guzhi=db.Column(db.String(255))
+    68shang=db.Column(db.String(255))
+    68xia=db.Column(db.String(255))
+    95shang=db.Column(db.String(255))
+    95xia=db.Column(db.String(255))
+    99shang=db.Column(db.String(255))
+    99xia=db.Column(db.String(255))
+
+class gpwj_bsd(db.Model):
+    riqi=db.Column(db.String(255))
+    gupiao=db.Column(db.String(255))
+    buydian=db.Column(db.String(255))
+    selldian=db.Column(db.String(255))
+    fangshi=db.Column(db.String(255))
+
+class gpwj_cqqr(db.Model):
+    riqi=db.Column(db.String(255))
+    gupiao=db.Column(db.String(255))
+    xiadie=db.Column(db.String(255))
+    chiping=db.Column(db.String(255))
+    shangzhang=db.Column(db.String(255))
+    fangshi=db.Column(db.String(255))
+
+class gpwj_dqxg(db.Model):
+    riqi=db.Column(db.String(255))
+    gupiao=db.Column(db.String(255))
+    xiangguan=db.Column(db.String(255))
+
+class gpwj_dqxs(db.Model):
+    riqi=db.Column(db.String(255))
+    gupiao=db.Column(db.String(255))
+    xiangsi=db.Column(db.String(255))
+
+class gpwj_jqzd(db.Model):
+    riqi=db.Column(db.String(255))
+    gupiao=db.Column(db.String(255))
+    qushi=db.Column(db.String(255))
+    qushitoupiao=db.Column(db.String(255))
+    xiangsigupiao=db.Column(db.String(255))
+
+class gpwj_ldzd(db.Model):
+    riqi=db.Column(db.String(255))
+    gupiao=db.Column(db.String(255))
+    guize=db.Column(db.String(255))
+
+class gpwj_tzdgp(db.Model):
+    riqi=db.Column(db.String(255))
+    gupiao=db.Column(db.String(255))
+    gupiaoliebiao=db.Column(db.String(255))
+    huoyueduliebiao=db.Column(db.String(255))
+
+class gpwj_tzsgp(db.Model):
+    riqi=db.Column(db.String(255))
+    gupiao=db.Column(db.String(255))
+    gupiaoliebiao=db.Column(db.String(255))
+    huoyueduliebiao=db.Column(db.String(255))
+
+class gpwj_zdfpx(db.Model):
+    riqi=db.Column(db.String(255))
+    gupiao=db.Column(db.String(255))
+    shoupanjia=db.Column(db.String(255))
+    xiangduigaodian=db.Column(db.String(255))
+    diefupaixu=db.Column(db.String(255))
+    xiangduididian=db.Column(db.String(255))
+    zhangfupaixu=db.Column(db.String(255))
+    tubiao=db.Column(db.String(255))
+
+class gpwj_zsli(db.Model):
+    riqi=db.Column(db.String(255))
+    gupiao=db.Column(db.String(255))
+    lishi=db.Column(db.String(255))
 
 
-class DB_LOG(db.Model):
-    __tablename__ = 'db_log'
-    id = db.Column(db.Integer, primary_key=True)
-    description = db.Column(db.Text)
-    commit_time = db.Column(db.String(255))
-    start_time = db.Column(db.String(255))
-    finish_time = db.Column(db.String(255))
-    status = db.Column(db.String(255))
-    error = db.Column(db.String(255))
-    admin_id = db.Column(db.String(255))
+class guwj_fzzhgl(db.Model):
+    riqi=db.Column(db.String(255))
+    gupiao=db.Column(db.String(255))
+    qianjianshu=db.Column(db.String(255))
+    qianjian=db.Column(db.String(255))
+    houjian=db.Column(db.String(255))
+    zhichidu=db.Column(db.String(255))
+    zhixindu=db.Column(db.String(255))
+    fenzifenmu=db.Column(db.String(255))
+
+class guwj_fzzhtj(db.Model):
+    riqi=db.Column(db.String(255))
+    gupiao=db.Column(db.String(255))
+    yuanci=db.Column(db.String(255))
+    d4=db.Column(db.String(255))
+    d3=db.Column(db.String(255))
+    d2=db.Column(db.String(255))
+    d1=db.Column(db.String(255))
+    d0=db.Column(db.String(255))
+    zongcishu=db.Column(db.String(255))
+    chuxiancishu=db.Column(db.String(255))
+    cishuzhanbi=db.Column(db.String(255))
 
 
-class DB_TABLES(db.Model):
-    __tablename__ = 'db_tables'
-    table_name = db.Column(db.String(255), primary_key=True)
-    description = db.Column(db.Text)
-    update_time = db.Column(db.String(255))
 
 
-class Stock_Basic(db.Model):
-    __tablename__ = 'stock_basic'
-    index = db.Column(db.BigInteger, primary_key=True)
-    ts_code = db.Column(db.String(255))
-    symbol = db.Column(db.Text)
-    name = db.Column(db.Text)
-    area = db.Column(db.Text)
-    industry = db.Column(db.Text)
-    fullname = db.Column(db.Text)
-    enname = db.Column(db.Text)
-    market = db.Column(db.Text)
-    exchange = db.Column(db.Text)
-    curr_type = db.Column(db.Text)
-    list_status = db.Column(db.Text)
-    list_date = db.Column(db.Text)
-    delist_date = db.Column(db.Text)
-    is_hs = db.Column(db.Text)
 
 
-class Stock_Daily_Bar(db.Model):
-    __tablename__ = 'stock_daily_bar'
-    trade_date = db.Column(db.String(255), primary_key=True)
-    ts_code = db.Column(db.String(255), primary_key=True)
-    open = db.Column(db.Float)
-    high = db.Column(db.Float)
-    low = db.Column(db.Float)
-    close = db.Column(db.Float)
-    pre_close = db.Column(db.Float)
-    change = db.Column(db.Float)
-    pct_change = db.Column(db.Float)
-    vol = db.Column(db.Float)
-    amount = db.Column(db.Float)
 
 
-class Model_TrendForecast(db.Model):
-    __tablename__ = 'model_trendforecast'
-    ts_code = db.Column(db.String(255), primary_key=True)
-    pt = db.Column(db.String(255), primary_key=True)
-    parameters = db.Column(db.BLOB)
-    similar_stocks = db.Column(db.BLOB)
-    expected_return = db.Column(db.BLOB)
-    votes = db.Column(db.BLOB)
 
 
-class Model_SimilarityShortTerm(db.Model):
-    __tablename__ = 'model_similarityshortterm'
-    ts_code = db.Column(db.String(255), primary_key=True)
-    pt = db.Column(db.String(255), primary_key=True)
-    parameters = db.Column(db.BLOB)
-    similar_stocks = db.Column(db.BLOB)
-    trendline = db.Column(db.BLOB)
 
 
-class Model_SimilarHistory(db.Model):
-    __tablename__ = 'model_similarhistory'
-    ts_code = db.Column(db.String(255), primary_key=True)
-    pt = db.Column(db.String(255), primary_key=True)
-    parameters = db.Column(db.BLOB)
-    similarduration = db.Column(db.BLOB)
-    trendline = db.Column(db.BLOB)
 
 
-class Model_StockActivity(db.Model):
-    __tablename__ = 'model_stockactivity'
-    ts_code = db.Column(db.String(255), primary_key=True)
-    pt = db.Column(db.String(255), primary_key=True)
-    parameters = db.Column(db.BLOB)
-    similar_stocks = db.Column(db.BLOB)
-    stockactivity = db.Column(db.BLOB)
 
 
-class Model_SimilarTrend(db.Model):
-    __tablename__ = 'model_similartrend'
-    ts_code = db.Column(db.String(255), primary_key=True)
-    pt = db.Column(db.String(255), primary_key=True)
-    parameters = db.Column(db.BLOB)
-    similar_stocks = db.Column(db.BLOB)
-    activitybytrend = db.Column(db.BLOB)
 
 
-class Model_CorrelationShortTerm(db.Model):
-    __tablename__ = 'model_correlationshortterm'
-    ts_code = db.Column(db.String(255), primary_key=True)
-    pt = db.Column(db.String(255), primary_key=True)
-    parameters = db.Column(db.BLOB)
-    corr_stocks = db.Column(db.BLOB)
-    trendline = db.Column(db.BLOB)
-
-
-class Model_StateTransition(db.Model):
-    __tablename__ = 'model_statetransition'
-    ts_code = db.Column(db.String(255), primary_key=True)
-    pt = db.Column(db.String(255), primary_key=True)
-    s_up = db.Column(db.Float)
-    s_blc = db.Column(db.Float)
-    s_down = db.Column(db.Float)
-    l_up = db.Column(db.Float)
-    l_blc = db.Column(db.Float)
-    l_down = db.Column(db.Float)
-    parameters = db.Column(db.BLOB)
-
-
-class Model_AssociateRule(db.Model):
-    __tablename__ = 'model_ associaterule'
-    ts_code_x = db.Column(db.String(255), primary_key=True)
-    ts_code_y = db.Column(db.String(255))
-    pt = db.Column(db.String(255), primary_key=True)
-    up_rate = db.Column(db.Float)
-    bic_rate = db.Column(db.Float)
-    down_rate = db.Column(db.Float)
-    parameters = db.Column(db.BLOB)
-
-
-class Model_AmplitudePortfolio(db.Model):
-    __tablename__ = ' model_amplitudeportfolio'
-    ts_code = db.Column(db.String(255), primary_key=True)
-    pt = db.Column(db.String(255), primary_key=True)
-    index = db.Column(db.String(255))
-    parameters = db.Column(db.BLOB)
-    group_rate = db.Column(db.BLOB)
-
-
-class Model_AmplitudeCorrelation(db.Model):
-    __tablename__ = ' model_amplitudecorrelation'
-    ts_code = db.Column(db.String(255), primary_key=True)
-    pt = db.Column(db.String(255), primary_key=True)
-    index = db.Column(db.String(255))
-    support = db.Column(db.Float)
-    parameters = db.Column(db.BLOB)
-    group_rate = db.Column(db.BLOB)
-
-
-class Model_AmplitudeStatistic(db.Model):
-    __tablename__ = ' model_amplitudestatistic'
-    ts_code = db.Column(db.String(255), primary_key=True)
-    pt = db.Column(db.String(255), primary_key=True)
-    close = db.Column(db.Float)
-    down_rate = db.Column(db.Float)
-    down_rank = db.Column(db.Float)
-    up_rate = db.Column(db.Float)
-    up_rank = db.Column(db.Float)
-    all_rank = db.Column(db.Float)
-    parameters = db.Column(db.BLOB)
 
 
 

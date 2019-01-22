@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>魔法金融-股票数据挖掘</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta content="魔法金融-股票数据挖掘" name="description"/>
+    <meta content="Coderthemes" name="author"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="{{ url_for("static",filename="images/favicon.ico") }}">
+
+    <!-- Icons css -->
+    <link href="{{ url_for("static",filename="libs/@mdi/font/css/materialdesignicons.min.css") }}" rel="stylesheet"
+          type="text/css"/>
+    <link href="{{ url_for("static",filename="libs/dripicons/webfont/webfont.css") }}" rel="stylesheet"
+          type="text/css"/>
+    <link href="{{ url_for("static",filename="libs/simple-line-icons/css/simple-line-icons.css") }}" rel="stylesheet"
+          type="text/css"/>
+
+    <!-- App css -->
+    <!-- build:css -->
+    <link href="{{ url_for("static",filename="css/app.css") }}" rel="stylesheet" type="text/css"/>
+    <!-- endbuild -->
+
+    <!-- Extend CSS -->
+    {% block css %}
+    {% endblock %}
+
+</head>
+
+<body>
+
+<!-- Navigation Bar-->
+<header id="topnav">
+    <nav class="navbar-custom">
+
+        <div class="container-fluid">
+            <ul class="list-unstyled topbar-right-menu float-right mb-0">
+
+                <li class="dropdown notification-list">
+                    <!-- Mobile menu toggle-->
+                    <a class="navbar-toggle nav-link">
+                        <div class="lines">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </a>
+                    <!-- End mobile menu toggle-->
+                </li>
+
+                <li class="dropdown notification-list">
+                    <a class="nav-link dropdown-toggle arrow-none" data-toggle="dropdown" href="#" role="button"
+                       aria-haspopup="false" aria-expanded="false">
+                        <i class="dripicons-bell noti-icon"></i>
+                        <span class="badge badge-danger badge-pill noti-icon-badge">4</span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated dropdown-lg">
+
+                        <!-- item-->
+                        <div class="dropdown-item noti-title">
+                            <h5 class="m-0"><span class="float-right"><a href="" class="text-dark"><small>清除全部</small></a> </span>通知
+                            </h5>
+                        </div>
+
+                        <div class="slimscroll noti-scroll">
+                            <!-- item-->
+                            <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                <div class="notify-icon bg-warning"><i class="mdi mdi-comment-account-outline"></i>
+                                </div>
+                                <p class="notify-details">Caleb Flakelar commented on Admin
+                                    <small class="text-muted">1 min ago</small>
+                                </p>
+                            </a>
+
+                            <!-- item-->
+                            <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                <div class="notify-icon bg-info"><i class="mdi mdi-account-plus"></i></div>
+                                <p class="notify-details">New user registered.
+                                    <small class="text-muted">5 hours ago</small>
+                                </p>
+                            </a>
+
+                            <!-- item-->
+                            <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                <div class="notify-icon"><img
+                                        src="{{ url_for('static',filename="images/users/avatar-2.jpg") }}"
+                                        class="img-fluid rounded-circle" alt=""/></div>
+                                <p class="notify-details">Cristina Pride</p>
+                                <p class="text-muted font-13 mb-0 user-msg">Hi, How are you? What about our next
+                                    meeting</p>
+                            </a>
+
+                            <!-- item-->
+                            <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                <div class="notify-icon bg-danger"><i class="mdi mdi-comment-account-outline"></i></div>
+                                <p class="notify-details">Caleb Flakelar commented on Admin
+                                    <small class="text-muted">4 days ago</small>
+                                </p>
+                            </a>
+
+                            <!-- item-->
+                            <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                <div class="notify-icon"><img
+                                        src="{{ url_for("static",filename="images/users/avatar-4.jpg") }}"
+                                        class="img-fluid rounded-circle" alt=""/></div>
+                                <p class="notify-details">Karen Robinson</p>
+                                <p class="text-muted font-13 mb-0 user-msg">Wow that's great</p>
+                            </a>
+
+                            <!-- item-->
+                            <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                <div class="notify-icon bg-primary"><i class="mdi mdi-heart"></i></div>
+                                <p class="notify-details">Carlos Crouch liked <b>Admin</b>
+                                    <small class="text-muted">13 days ago</small>
+                                </p>
+                            </a>
+                        </div>
+
+                        <!-- All-->
+                        <a href="javascript:void(0);"
+                           class="dropdown-item text-center text-primary notify-item notify-all">
+                            查看全部通知 <i class="fi-arrow-right"></i>
+                        </a>
+
+                    </div>
+                </li>
+
+                <li class="dropdown notification-list">
+                    <a class="nav-link dropdown-toggle nav-user" data-toggle="dropdown" href="#" role="button"
+                       aria-haspopup="false" aria-expanded="false">
+                        <img src="{{ url_for("static",filename="images/users/avatar-1.jpg") }}" alt="user"
+                             class="rounded-circle"> <span class="ml-1">{{ current_user.username }} <i
+                            class="mdi mdi-chevron-down"></i> </span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated profile-dropdown ">
+                        <!-- item-->
+                        <div class="dropdown-item noti-title">
+                            <h6 class="text-overflow m-0">欢迎 ！</h6>
+                        </div>
+
+                        <!-- item-->
+                        <a href="javascript:void(0);" class="dropdown-item notify-item">
+                            <i class="dripicons-user"></i> <span>我的账户</span>
+                        </a>
+
+                        <!-- item-->
+                        <a href="javascript:void(0);" class="dropdown-item notify-item">
+                            <i class="dripicons-gear"></i> <span>设置</span>
+                        </a>
+
+                        <!-- item-->
+                        <a href="javascript:void(0);" class="dropdown-item notify-item">
+                            <i class="dripicons-help"></i> <span>支持</span>
+                        </a>
+
+                        <!-- item-->
+{#                        <a href="javascript:void(0);" class="dropdown-item notify-item">#}
+{#                            <i class="dripicons-lock"></i> <span>锁屏</span>#}
+{#                        </a>#}
+
+                        <!-- item-->
+                        <a href="javascript:void(0);" class="dropdown-item notify-item">
+                            <i class="dripicons-power"></i> <span>登出</span>
+                        </a>
+
+                    </div>
+                </li>
+                <li class="dropdown notification-list">
+                    <a href="javascript:void(0);" class="nav-link right-bar-toggle">
+                        <i class="dripicons-gear noti-icon"></i>
+                    </a>
+                </li>
+
+            </ul>
+
+            <ul class="list-inline menu-left mb-0">
+                <li class="float-left">
+                    <a href="{{ url_for("main.index") }}" class="logo">
+                                <span class="logo-lg">
+                                    <img src="{{ url_for("static",filename="images/logo.png") }}" alt="" height="20">
+                                </span>
+                        <span class="logo-sm">
+                                    <img src="{{ url_for("static",filename="images/logo_sm.png") }}" alt="" height="28">
+                                </span>
+                    </a>
+                </li>
+                <li class="app-search">
+                    <form>
+                        <input type="text" placeholder="请输入股票名称或代码" class="form-control">
+                        <button type="submit" class="sr-only"></button>
+                    </form>
+                </li>
+            </ul>
+        </div>
+
+    </nav>
+    <!-- end topbar-main -->
+
+    <div class="topbar-menu">
+        <div class="container-fluid">
+            <div id="navigation">
+                <!-- Navigation Menu-->
+                <ul class="navigation-menu">
+
+                    <li class="has-submenu">
+                        <a href=""><i class="mdi mdi-view-dashboard"></i>智能解盘</a>
+                    </li>
+
+                    <li class="has-submenu">
+                        <a href="#"><i class="mdi mdi-atom"></i>大盘分析</a>
+                        <ul class="submenu">
+                            <li class="has-submenu">
+                                <a href="#">大盘指数</a>
+                                <ul class="submenu">
+                                    <li><a href="">上证指数</a></li>
+                                    <li><a href="">深圳成指</a></li>
+                                    <li><a href="">中小板指</a></li>
+                                    <li><a href="">创业板指</a></li>
+                                </ul>
+                            </li>
+                            <li class="has-submenu">
+                                <a href="#">主题指数</a>
+                                <ul class="submenu">
+                                    <li><a href="">深次新股</a></li>
+                                    <li><a href="">大中盘</a></li>
+                                    <li><a href="">中小盘</a></li>
+                                    <li><a href="">周期100</a></li>
+                                    <li><a href="">防御100</a></li>
+                                    <li><a href="">平均股价</a></li>
+                                </ul>
+                            </li>
+                            <li class="has-submenu">
+                                <a href="#">策略指数</a>
+                                <ul class="submenu">
+                                    <li><a href="">央视50</a></li>
+                                    <li><a href="">分析师指数</a></li>
+                                    <li><a href="">绩效指数</a></li>
+                                    <li><a href="">红利100</a></li>
+                                </ul>
+                            </li>
+                            <li class="has-submenu">
+                                <a href="#">基础数据全景</a>
+                                <ul class="submenu">
+                                    <li><a href="">新股上市时间</a></li>
+                                    <li><a href="">超级大股东</a></li>
+                                    <li><a href="">高管人员兼职</a></li>
+                                    <li><a href="">实力承销商</a></li>
+                                    <li><a href="">企业位置分布</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="">股票账户统计</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="has-submenu">
+                        <a href="#"><i class="mdi mdi-email-outline"></i>板块全景</a>
+                        <ul class="submenu">
+                            <li class="has-submenu">
+                                <a href="#">场内动态全景</a>
+                                <ul class="submenu">
+                                    <li><a href="">资金流向全景</a></li>
+                                    <li><a href="">交易活跃全景</a></li>
+                                    <li><a href="">走势变化全景</a></li>
+                                    <li><a href="">市值分布全景</a></li>
+                                    <li><a href="">动态估值全景</a></li>
+                                </ul>
+                            </li>
+                            <li class="has-submenu">
+                                <a href="#">场外动态全景</a>
+                                <ul class="submenu">
+                                    <li><a href="">点击热度全景</a></li>
+                                    <li><a href="">股吧人气全景</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="">财务指标比较</a></li>
+                            <li><a href="">行情数据比较</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="has-submenu">
+                        <a href="#"><i class="mdi mdi-cube-outline"></i>个股排序</a>
+                        <ul class="submenu">
+                            <li class="has-submenu">
+                                <a href="#">走势预测排序</a>
+                                <ul class="submenu">
+                                    <li><a href="">买点统计排序</a></li>
+                                    <li><a href="">相似走势排序</a></li>
+                                    <li><a href="">相关走势排序</a></li>
+                                    <li><a href="">自身重现排序</a></li>
+                                    <li><a href="">长期趋势排序</a></li>
+                                </ul>
+                            </li>
+                            <li class="has-submenu">
+                                <a href="#">股票估值排序</a>
+                                <ul class="submenu">
+                                    <li><a href="">基于相似收益</a></li>
+                                    <li><a href="">基于行业均值</a></li>
+                                    <li><a href="">各行业平均PE及前三</a></li>
+                                </ul>
+                            </li>
+                            <li class="has-submenu">
+                                <a href="#">资金流向排序</a>
+                                <ul class="submenu">
+                                    <li><a href="">主力资金排序</a></li>
+                                    <li><a href="">主力净流入排序</a></li>
+                                    <li><a href="">主力控盘能力排序</a></li>
+                                </ul>
+                            </li>
+                            <li class="has-submenu">
+                                <a href="#">筹码分布排序</a>
+                                <ul class="submenu">
+                                    <li><a href="">成本偏离排序</a></li>
+                                    <li><a href="">获利比例排序</a></li>
+                                    <li><a href="">筹码集中度排序</a></li>
+                                </ul>
+                            </li>
+                            <li class="has-submenu">
+                                <a href="#">规则统计排序</a>
+                                <ul class="submenu">
+                                    <li><a href="">联动涨跌排序</a></li>
+                                    <li><a href="">幅值组合排序</a></li>
+                                    <li><a href="">涨跌幅排序</a></li>
+                                    <li><a href="">走势形态匹配</a></li>
+                                </ul>
+                            </li>
+                            <li class="has-submenu">
+                                <a href="#">人气热度排序</a>
+                                <ul class="submenu">
+                                    <li><a href="">股吧人气排序</a></li>
+                                    <li><a href="">研报热度排序</a></li>
+                                    <li><a href="">自选热度排序</a></li>
+                                    <li><a href="">点击热度排序</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="has-submenu">
+                        <a href="#"><i class="mdi mdi-file-multiple"></i>选股策略</a>
+                        <ul class="submenu">
+                            <li class="has-submenu">
+                                <a href="#">超短线攻略</a>
+                                <ul class="submenu">
+                                    <li><a href="">买卖点突变</a></li>
+                                    <li><a href="">下影线逆袭</a></li>
+                                    <li><a href="">深跌偏离反弹</a></li>
+                                    <li><a href="">均线拐头发散</a></li>
+                                    <li><a href="">综合得分剧升</a></li>
+                                </ul>
+                            </li>
+                            <li class="has-submenu">
+                                <a href="#">短线攻略</a>
+                                <ul class="submenu">
+                                    <li><a href="">资金关注重点</a></li>
+                                    <li><a href="">筹码集中拉升</a></li>
+                                    <li><a href="">强弱趋势转换</a></li>
+                                    <li><a href="">预测趋势抬头</a></li>
+                                    <li><a href="">量价步步高进</a></li>
+                                </ul>
+                            </li>
+                            <li class="has-submenu">
+                                <a href="#">中长线攻略</a>
+                                <ul class="submenu">
+                                    <li><a href="">估值洼地</a></li>
+                                    <li><a href="">财务打分评级</a></li>
+                                    <li><a href="">多维综合得分</a></li>
+                                </ul>
+                            </li>
+                            <li class="has-submenu">
+                                <a href="#">相似走势选股</a>
+                                <ul class="submenu">
+                                    <li><a href="">1日排序</a></li>
+                                    <li><a href="">2日排序</a></li>
+                                    <li><a href="">3日排序</a></li>
+                                    <li><a href="">1/2/3日合并排序</a></li>
+                                    <li><a href="">30日排序</a></li>
+                                </ul>
+                            </li>
+                            <li class="has-submenu">
+                                <a href="#">相关走势选股</a>
+                                <ul class="submenu">
+                                    <li><a href="">1日排序</a></li>
+                                    <li><a href="">2日排序</a></li>
+                                    <li><a href="">3日排序</a></li>
+                                    <li><a href="">1/2/3日合并排序</a></li>
+                                    <li><a href="">30日排序</a></li>
+                                </ul>
+                            </li>
+
+                        </ul>
+                    </li>
+                </ul>
+                <!-- End navigation menu -->
+
+                <div class="clearfix"></div>
+            </div> <!-- end #navigation -->
+        </div> <!-- end container -->
+    </div> <!-- end navbar-custom -->
+</header>
+<!-- End Navigation Bar-->
+
+
+<div class="wrapper">
+    <div class="container-fluid">
+        <!-- Page title box -->
+{% block pagetitle %}
+        <div class="page-title-alt-bg"></div>
+        <div class="page-title-box">
+            <ol class="breadcrumb float-right">
+                <li class="breadcrumb-item"><a href="javascript:void(0);">Greeva</a></li>
+                <li class="breadcrumb-item"><a href="javascript:void(0);">Pages</a></li>
+                <li class="breadcrumb-item active">Starter</li>
+            </ol>
+            <h4 class="page-title">Starter</h4>
+        </div>
+{% endblock %}
+        <!-- End page title box -->
+
+{% block content %}
+{% endblock %}
+
+    </div> <!-- end container -->
+</div>
+
+<!-- end wrapper -->
+
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 text-center">
+                2018 © 魔法金融 - finmagic.cn
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- End Footer -->
+
+
+<!-- Right Sidebar -->
+<div class="right-bar">
+    <div class="rightbar-title">
+        <a href="javascript:void(0);" class="right-bar-toggle float-right">
+            <i class="dripicons-cross noti-icon"></i>
+        </a>
+        <h5 class="m-0">设置</h5>
+    </div>
+    <div class="slimscroll-menu">
+        <!-- User box -->
+        <div class="user-box">
+            <div class="user-img">
+                <img src="{{ url_for("static",filename="images/users/avatar-1.jpg") }}" alt="user-img" title="avatar"
+                     class="rounded-circle img-fluid">
+                <a href="" class="user-edit"><i class="mdi mdi-pencil"></i></a>
+            </div>
+
+            <h5><a href="#">{{ current_user.username }}</a></h5>
+            <p class="text-muted mb-0">
+                <small>{{ current_user.emailaddress }}</small>
+            </p>
+        </div>
+
+        <!-- Settings -->
+        <hr class="mt-0"/>
+        <h5 class="pl-3">基本设置</h5>
+        <hr class="mb-0"/>
+
+        <div class="p-3">
+            <div class="checkbox checkbox-primary mb-2">
+                <input id="checkbox1" type="checkbox" checked>
+                <label for="checkbox1">
+                    Notifications
+                </label>
+            </div>
+            <div class="checkbox checkbox-primary mb-2">
+                <input id="checkbox2" type="checkbox" checked>
+                <label for="checkbox2">
+                    API Access
+                </label>
+            </div>
+            <div class="checkbox checkbox-primary mb-2">
+                <input id="checkbox3" type="checkbox">
+                <label for="checkbox3">
+                    Auto Updates
+                </label>
+            </div>
+            <div class="checkbox checkbox-primary mb-2">
+                <input id="checkbox4" type="checkbox" checked>
+                <label for="checkbox4">
+                    Online Status
+                </label>
+            </div>
+            <div class="checkbox checkbox-primary mb-0">
+                <input id="checkbox5" type="checkbox" checked>
+                <label for="checkbox5">
+                    Auto Payout
+                </label>
+            </div>
+        </div>
+
+
+        <!-- Timeline -->
+        <hr class="mt-0"/>
+        <h5 class="pl-3 pr-3">我的消息 <span class="float-right badge badge-pill badge-danger">25</span></h5>
+        <hr class="mb-0"/>
+        <div class="p-3">
+            <div class="inbox-widget">
+                <a href="#">
+                    <div class="inbox-item">
+                        <div class="inbox-item-img"><img src="assets/images/users/avatar-1.jpg" class="rounded-circle"
+                                                         alt=""></div>
+                        <p class="inbox-item-author">Chadengle</p>
+                        <p class="inbox-item-text">Hey! there I'm available...</p>
+                        <p class="inbox-item-date">13:40 PM</p>
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="inbox-item">
+                        <div class="inbox-item-img"><img src="assets/images/users/avatar-2.jpg" class="rounded-circle"
+                                                         alt=""></div>
+                        <p class="inbox-item-author">Tomaslau</p>
+                        <p class="inbox-item-text">I've finished it! See you so...</p>
+                        <p class="inbox-item-date">13:34 PM</p>
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="inbox-item">
+                        <div class="inbox-item-img"><img src="assets/images/users/avatar-3.jpg" class="rounded-circle"
+                                                         alt=""></div>
+                        <p class="inbox-item-author">Stillnotdavid</p>
+                        <p class="inbox-item-text">This theme is awesome!</p>
+                        <p class="inbox-item-date">13:17 PM</p>
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="inbox-item">
+                        <div class="inbox-item-img"><img src="assets/images/users/avatar-4.jpg" class="rounded-circle"
+                                                         alt=""></div>
+                        <p class="inbox-item-author">Kurafire</p>
+                        <p class="inbox-item-text">Nice to meet you</p>
+                        <p class="inbox-item-date">12:20 PM</p>
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="inbox-item">
+                        <div class="inbox-item-img"><img src="assets/images/users/avatar-5.jpg" class="rounded-circle"
+                                                         alt=""></div>
+                        <p class="inbox-item-author">Shahedk</p>
+                        <p class="inbox-item-text">Hey! there I'm available...</p>
+                        <p class="inbox-item-date">10:15 AM</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /Right-bar -->
+
+
+<!-- jQuery  -->
+<script src="{{ url_for("static",filename="libs/jquery/jquery.min.js") }}"></script>
+<script src="{{ url_for("static",filename="libs/bootstrap/js/bootstrap.bundle.min.js") }}"></script>
+<script src="{{ url_for("static",filename="libs/jquery-slimscroll/jquery.slimscroll.min.js") }}"></script>
+
+<!-- App js -->
+<script src="{{ url_for("static",filename="js/jquery.core.js") }}"></script>
+<script src="{{ url_for("static",filename="js/jquery.app.js") }}"></script>
+
+<!-- Extend Scripts  -->
+{% block scripts %}
+{% endblock %}
+
+</body>
+</html>
+   

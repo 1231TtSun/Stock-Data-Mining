@@ -5,11 +5,11 @@
     <title>Title</title>
 </head>
 <body>
-<p>当前用户:{{ current_user.nickname }}</p>
+<p>当前用户:{{ current_user.username }}</p>
 <p>当前is_authenticated {{ current_user.is_authenticated }}</p>
 <p>当前active {{ current_user.is_active }}</p>
 <p>当前anonyous {{ current_user.is_anonymous }}</p>
 <p>当前fresh：{{ fresh }}</p>
- <p>id {{ current_user.get_id() }}</p>
+<p>id {{ current_user.get_id() }}</p>
 </body>
 </html>
