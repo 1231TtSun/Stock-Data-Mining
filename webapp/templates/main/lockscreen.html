@@ -1,44 +1,37 @@
 {% extends "main/main_base.html" %}
 {% block content %}
-    <!-- Login -->
+    <!-- HOME -->
     <section>
             <div class="container">
                 <div class="row">
-                    <div class="col-12">
+                    <div class="col-sm-12">
 
                         <div class="wrapper-page">
                             <div class="account-pages">
                                 <div class="account-box">
 
-                                    <!-- Logo box-->
+                                    <!-- Logo box -->
                                     <div class="account-logo-box">
                                         <h2 class="text-uppercase text-center">
                                             <a href="{{ url_for("main.index") }}" class="text-success">
-                                                <span><img src="{{ url_for('static',filename='images/logo_dark.png') }}" alt="" height="28"></span>
+                                                <span><img src="{{ url_for("static",filename="images/logo_dark.png") }}" alt="" height="28"></span>
                                             </a>
                                         </h2>
                                     </div>
 
                                     <div class="account-content">
-                                        <form action="{{ url_for("main.api_login") }}" method="post">
-                                            <div class="form-group mb-3">
-                                                <label for="emailaddress" class="font-weight-medium">邮箱地址</label>
-                                                <input class="form-control" type="email" id="emailaddress" required="" placeholder="输入注册邮箱">
+                                        <div class="text-center">
+                                            <div class="mb-2">
+                                                <img src="{{ url_for("static",filename="images/users/") }}avatar-1.jpg" class="rounded-circle img-thumbnail thumb-lg" alt="thumbnail">
                                             </div>
 
+                                            <p class="text-muted mb-4 font-13">请输入密码</p>
+                                        </div> <!-- end text-center-->
+
+                                        <form class="form-horizontal" action="{{ url_for("main.api_lockscreen") }}" method="post">
                                             <div class="form-group mb-3">
-                                                <a href="{{ url_for("main.recoverpassword") }}" class="text-muted float-right"><small>忘记密码？</small></a>
                                                 <label for="password" class="font-weight-medium">密码</label>
-                                                <input class="form-control" type="password" required="" id="password" placeholder="输入密码">
-                                            </div>
-
-                                            <div class="form-group mb-3">
-                                                <div class="checkbox checkbox-info">
-                                                    <input name="remember" type="checkbox">
-                                                    <label for="remember">
-                                                        记住我
-                                                    </label>
-                                                </div>
+                                                <input class="form-control" type="password" required="" name="password" placeholder="请输入密码">
                                             </div>
 
                                             <div class="form-group row text-center">
@@ -50,9 +43,10 @@
 
                                         <div class="row mt-3">
                                             <div class="col-12 text-center">
-                                                <p class="text-muted">还没有账号？ <a href="{{ url_for("main.register") }}" class="text-dark m-l-5"><b>注册</b></a></p>
+                                                <p class="text-muted">不是我？ 返回<a href="{{ url_for("main.login") }}" class="text-dark m-l-5"><b>登陆</b></a></p>
                                             </div>
-                                        </div> <!-- end row-->
+                                        </div> <!-- end row -->
+
                                     </div> <!-- end account-content -->
 
                                 </div> <!-- end account-box -->
@@ -65,7 +59,5 @@
                 </div> <!-- end row -->
             </div> <!-- end container -->
         </section>
-    <!-- END Login -->
+    <!-- END HOME -->
 {% endblock %}
-
-

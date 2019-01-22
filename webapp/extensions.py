@@ -4,7 +4,7 @@ from .models import User
 # 登陆控制
 login_manager = LoginManager()
 login_manager.login_view = "main.login"
-login_manager.refresh_view="main.refresh"
+login_manager.refresh_view="main.lockscreen"
 login_manager.session_protection = "strong"
 
 # 用于flash消息 在ajax方式中无效
