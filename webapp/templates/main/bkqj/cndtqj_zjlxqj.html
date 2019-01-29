@@ -1,0 +1,327 @@
+{% extends "base.html" %}
+{% block pagetitle %}
+    <div class="page-title-alt-bg"></div>
+    <div class="page-title-box">
+        <ol class="breadcrumb float-right">
+            <li class="breadcrumb-item"><a href="javascript:void(0);">全景掌握当日交易不同分类资金的分布及变化动向。</a></li>
+            {#            <li class="breadcrumb-item"><a href="javascript:void(0);">场内动态全景</a></li>#}
+        </ol>
+        <h4 class="page-title">资金流向全景</h4>
+    </div>
+{% endblock %}
+{% block content %}
+    <div class="row">
+        <div class="col-1"></div>
+        <div class="col-2">
+            <div class="row">
+                <div class="nav flex-column nav-pills nav-pills-tab" id="v-pills-tab" role="tablist"
+                     aria-orientation="vertical">
+                    <a class="nav-link active show mb-2" id="v-pills-home-tab" data-toggle="pill"
+                       href="#v-pills-home" role="tab" aria-controls="v-pills-home"
+                       aria-selected="true">
+                        2019/01/24</a>
+                    <a class="nav-link mb-2" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile"
+                       role="tab" aria-controls="v-pills-profile"
+                       aria-selected="false">
+                        2019/01/23</a>
+                    <a class="nav-link mb-2" id="v-pills-messages-tab" data-toggle="pill"
+                       href="#v-pills-messages" role="tab" aria-controls="v-pills-messages"
+                       aria-selected="false">
+                        2019/01/22</a>
+                    <a class="nav-link mb-2" id="v-pills-settings-tab" data-toggle="pill"
+                       href="#v-pills-settings" role="tab" aria-controls="v-pills-settings"
+                       aria-selected="false">
+                        2019/01/21</a>
+                    <a class="nav-link mb-2" id="v-pills-home-tab" data-toggle="pill"
+                       href="#v-pills-home" role="tab" aria-controls="v-pills-home"
+                       aria-selected="true">
+                        2019/01/18</a>
+                    <a class="nav-link mb-2" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile"
+                       role="tab" aria-controls="v-pills-profile"
+                       aria-selected="false">
+                        2019/01/17</a>
+                    <a class="nav-link mb-2" id="v-pills-messages-tab" data-toggle="pill"
+                       href="#v-pills-messages" role="tab" aria-controls="v-pills-messages"
+                       aria-selected="false">
+                        2019/01/16</a>
+                    <a class="nav-link mb-2" id="v-pills-settings-tab" data-toggle="pill"
+                       href="#v-pills-settings" role="tab" aria-controls="v-pills-settings"
+                       aria-selected="false">
+                        2019/01/15</a>
+                    <a class="nav-link mb-2" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile"
+                       role="tab" aria-controls="v-pills-profile"
+                       aria-selected="false">
+                        2019/01/14</a>
+                    <a class="nav-link mb-2" id="v-pills-messages-tab" data-toggle="pill"
+                       href="#v-pills-messages" role="tab" aria-controls="v-pills-messages"
+                       aria-selected="false">
+                        2019/01/13</a>
+                    <a class="nav-link mb-2" id="v-pills-settings-tab" data-toggle="pill"
+                       href="#v-pills-settings" role="tab" aria-controls="v-pills-settings"
+                       aria-selected="false">
+                        2019/01/12</a>
+                </div>
+            </div> <!-- end row-->
+
+
+        </div>
+        <div class="col-8">
+            <div class="row">
+                <div class="col-8"></div>
+                <div class="col-4">
+                    <div height="100px">
+                        <ul class="nav nav-pills navtab-bg nav-justified">
+                            <li class="nav-item">
+                                <a href="#home1" data-toggle="tab" aria-expanded="false" class="nav-link">按行业 </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#profile1" data-toggle="tab" aria-expanded="true"
+                                   class="nav-link active">按地域</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#messages1" data-toggle="tab" aria-expanded="false" class="nav-link">按概念</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane show active" id="home1"></div>
+                            <div class="tab-pane" id="profile1"></div>
+                            <div class="tab-pane" id="messages1"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="jyzjl_1" style="width:100%;height:500px;"></div>
+            <a style="color: red">注：横轴为行业分类，纵轴为该分类下当日参与交易股票的总资金量(亿)。</a>
+            <div id="jyzjl_5" style="width:100%;height:500px;margin-top: 50px"></div>
+            <a style="color: red">注：横轴为行业分类，纵轴为该分类下近5日参与交易股票的总资金量(亿)。</a>
+            <div id="jyzjl_20" style="width:100%;height:500px;margin-top: 50px"></div>
+            <a style="color: red">注：横轴为行业分类，纵轴为该分类下近20日参与交易股票的总资金量(亿)。</a>
+            <div style="width:100%;margin-top: 50px">
+                <table class="table mb-0">
+                    <thead class="thead-light">
+                    <tr>
+                        <th>#</th>
+                        <th>行业</th>
+                        <th>近30天交易资金走势（亿）</th>
+                        <th>近30天交易资金变化率</th>
+                        <th>当日变化率</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>银行</td>
+                        <td id="zs_1"></td>
+                        <td id="bhl_1"></td>
+                        <td id="drbhl_1" style="color: red">81%</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>建筑材料</td>
+                        <td id="zs_2"></td>
+                        <td id="bhl_2"></td>
+                        <td id="drbhl_2" style="color: red">35%</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td>轻工制造</td>
+                        <td id="zs_3"></td>
+                        <td id="bhl_3"></td>
+                        <td id="drbhl_3" style="color: red">33%</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div id='test' style="height:30px;width:100%"></div>
+
+        </div>
+    </div>
+
+
+    <script type="text/javascript">
+        var myChart_1 = echarts.init(document.getElementById('jyzjl_1'));
+        myChart_1.hideLoading();
+        option_1 = {
+            title: {
+                text: '今日不同行业分类下的交易资金量'
+            },
+            xAxis: {
+                type: 'category',
+                data: ['电子', '化工', '医药生物', '通讯', '机械设备', '国防军工', '休闲服务'],
+                axisLabel: {
+                    interval: 0,
+                    rotate: 20,
+                    textStyle: {
+                        color:
+                            function (value, index) {
+                                if (index < 2) {
+                                    return 'red';
+                                } else if (index > 4) {
+                                    return 'green';
+                                } else {
+                                    return 'black'
+                                }
+                            }
+                    }
+                }
+            },
+            yAxis: {
+                type: 'value'
+            }
+            ,
+            series: [{
+                data: [120, 200, 150, 80, 70, 110, 90],
+                type: 'bar',
+                label: {
+                    normal: {
+                        show: true,
+                        position: 'top',
+                    },
+                },
+                markLine: {
+                    data: [
+                        {type: 'average', name: '平均值'}
+                    ],
+                },
+            }],
+        };
+        myChart_1.setOption(option_1);
+
+        var myChart_5 = echarts.init(document.getElementById('jyzjl_5'));
+        myChart_5.hideLoading();
+        option_5 = {
+            title: {
+                text: '今日不同行业分类下的交易资金量'
+            },
+            xAxis: {
+                type: 'category',
+                data: ['电子', '化工', '医药生物', '通讯', '机械设备', '国防军工', '休闲服务'],
+                axisLabel: {
+                    interval: 0,
+                    rotate: 20,
+                    textStyle: {
+                        color:
+                            function (value, index) {
+                                if (index < 2) {
+                                    return 'red';
+                                } else if (index > 4) {
+                                    return 'green';
+                                } else {
+                                    return 'black'
+                                }
+                            }
+                    }
+                }
+            },
+            yAxis: {
+                type: 'value'
+            }
+            ,
+            series: [{
+                data: [120, 200, 150, 80, 70, 110, 90],
+                type: 'bar',
+                label: {
+                    normal: {
+                        show: true,
+                        position: 'top',
+                    },
+                },
+                markLine: {
+                    data: [
+                        {type: 'average', name: '平均值'}
+                    ],
+                },
+            }],
+        };
+        myChart_5.setOption(option_1);
+
+        var myChart_20 = echarts.init(document.getElementById('jyzjl_20'));
+        myChart_20.hideLoading();
+        option_20 = {
+            title: {
+                text: '今日不同行业分类下的交易资金量'
+            },
+            xAxis: {
+                type: 'category',
+                data: ['电子', '化工', '医药生物', '通讯', '机械设备', '国防军工', '休闲服务'],
+                axisLabel: {
+                    interval: 0,
+                    rotate: 20,
+                    textStyle: {
+                        color:
+                            function (value, index) {
+                                if (index < 2) {
+                                    return 'red';
+                                } else if (index > 4) {
+                                    return 'green';
+                                } else {
+                                    return 'black'
+                                }
+                            }
+                    }
+                }
+            },
+            yAxis: {
+                type: 'value'
+            }
+            ,
+            series: [{
+                data: [120, 200, 150, 80, 70, 110, 90],
+                type: 'bar',
+                label: {
+                    normal: {
+                        show: true,
+                        position: 'top',
+                    },
+                },
+                markLine: {
+                    data: [
+                        {type: 'average', name: '平均值'}
+                    ],
+                },
+            }],
+        };
+        myChart_20.setOption(option_20);
+
+        var myChart_zs_1 = echarts.init(document.getElementById('zs_1'));
+        myChart_zs_1.hideLoading();
+        option_zs_1 = {
+            grid: {
+                x: 0,
+                y: 0,
+                //x2: 0,
+                y2: 0,
+
+            },
+            xAxis: {
+                type: 'category',
+                data: ['1', '2', '3', '4', '5', '6', '7','8','9','10'],
+                show: false
+            },
+            yAxis: {
+                type: 'value',
+                show: false,
+                min: function (value) {
+                    return value.min - 50;
+                },
+                max: function (value) {
+                    return value.max + 50;
+                }
+            },
+            series: [{
+                data: [420, 432, 401, 434, 400, 450, 410,432,420,455],
+                type: 'line',
+                smooth: false,
+                areaStyle: {},
+            }]
+        };
+        myChart_zs_1.setOption(option_zs_1);
+        window.onresize = function () {
+            myChart_zs_1.resize();
+        }
+
+
+    </script>
+{% endblock %}
+{% block scripts %}
+{% endblock %}

@@ -7,7 +7,7 @@
     <meta content="魔法金融-股票数据挖掘" name="description"/>
     <meta content="Coderthemes" name="author"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-
+    <script type="text/javascript" src="{{ url_for("static",filename="js/echarts.min.js") }}"></script>
     <!-- App favicon -->
     <link rel="shortcut icon" href="{{ url_for("static",filename="images/favicon.ico") }}">
 
@@ -157,9 +157,9 @@
                         </a>
 
                         <!-- item-->
-{#                        <a href="javascript:void(0);" class="dropdown-item notify-item">#}
-{#                            <i class="dripicons-lock"></i> <span>锁屏</span>#}
-{#                        </a>#}
+                        {#                        <a href="javascript:void(0);" class="dropdown-item notify-item">#}
+                        {#                            <i class="dripicons-lock"></i> <span>锁屏</span>#}
+                        {#                        </a>#}
 
                         <!-- item-->
                         <a href="javascript:void(0);" class="dropdown-item notify-item">
@@ -204,54 +204,62 @@
             <div id="navigation">
                 <!-- Navigation Menu-->
                 <ul class="navigation-menu">
-
                     <li class="has-submenu">
-                        <a href=""><i class="mdi mdi-view-dashboard"></i>智能解盘</a>
+                        <a href="index.html"><i class="mdi mdi-view-dashboard"></i>首页</a>
+                        <ul class="submenu">
+                            <li class="has-submenu">
+                                <a href="ui-buttons.html"><i class="mdi mdi-altimeter"></i> 智能解盘</a></li>
+                        </ul>
                     </li>
+
 
                     <li class="has-submenu">
                         <a href="#"><i class="mdi mdi-atom"></i>大盘分析</a>
                         <ul class="submenu">
                             <li class="has-submenu">
-                                <a href="#">大盘指数</a>
+                                <a href="ui-buttons.html"><i class="mdi mdi-chart-areaspline"></i> 大盘指数</a>
                                 <ul class="submenu">
-                                    <li><a href="">上证指数</a></li>
-                                    <li><a href="">深圳成指</a></li>
-                                    <li><a href="">中小板指</a></li>
-                                    <li><a href="">创业板指</a></li>
+                                    <li><a href="chart-flot.html">上证指数</a></li>
+                                    <li><a href="chart-chartist.html">深证成指</a></li>
+                                    <li><a href="chart-chartjs.html">中小板指</a></li>
+                                    <li><a href="chart-knob.html">创业板指</a></li>
                                 </ul>
                             </li>
                             <li class="has-submenu">
-                                <a href="#">主题指数</a>
+                                <a href="ui-buttons.html"><i class="mdi mdi-chart-gantt"></i> 主题指数</a>
                                 <ul class="submenu">
-                                    <li><a href="">深次新股</a></li>
-                                    <li><a href="">大中盘</a></li>
-                                    <li><a href="">中小盘</a></li>
-                                    <li><a href="">周期100</a></li>
-                                    <li><a href="">防御100</a></li>
-                                    <li><a href="">平均股价</a></li>
+                                    <li><a href="chart-flot.html">深次新股</a></li>
+                                    <li><a href="chart-chartist.html">大中盘</a></li>
+                                    <li><a href="chart-chartjs.html">中小盘</a></li>
+                                    <li><a href="chart-knob.html">周期100</a></li>
+                                    <li><a href="chart-chartjs.html">防御100</a></li>
+                                    <li><a href="chart-knob.html">平均股价</a></li>
                                 </ul>
                             </li>
                             <li class="has-submenu">
-                                <a href="#">策略指数</a>
+                                <a href="ui-buttons.html"><i class="mdi mdi-chart-line-stacked"></i> 策略指数</a>
                                 <ul class="submenu">
-                                    <li><a href="">央视50</a></li>
-                                    <li><a href="">分析师指数</a></li>
-                                    <li><a href="">绩效指数</a></li>
-                                    <li><a href="">红利100</a></li>
+                                    <li><a href="chart-flot.html">央视50</a></li>
+                                    <li><a href="chart-chartist.html">分析师指数</a></li>
+                                    <li><a href="chart-chartjs.html">绩效指数</a></li>
+                                    <li><a href="chart-knob.html">红利100</a></li>
                                 </ul>
                             </li>
                             <li class="has-submenu">
-                                <a href="#">基础数据全景</a>
+                                <a href="ui-buttons.html"><i class="mdi mdi-bookmark"></i> 基础数据全景</a>
                                 <ul class="submenu">
-                                    <li><a href="">新股上市时间</a></li>
-                                    <li><a href="">超级大股东</a></li>
-                                    <li><a href="">高管人员兼职</a></li>
-                                    <li><a href="">实力承销商</a></li>
-                                    <li><a href="">企业位置分布</a></li>
+                                    <li><a href="chart-flot.html">新股上市时间</a></li>
+                                    <li><a href="chart-chartist.html">超级大股东</a></li>
+                                    <li><a href="chart-chartjs.html">高管人员兼职</a></li>
+                                    <li><a href="chart-knob.html">实力承销商</a></li>
+                                    <li><a href="chart-chartjs.html">企业位置分布</a></li>
                                 </ul>
                             </li>
-                            <li><a href="">股票账户统计</a></li>
+                            <li class="has-submenu">
+                                <a href="ui-buttons.html"><i class="mdi mdi-chart-bar"></i> 股票账户统计</a>
+                            </li>
+
+
                         </ul>
                     </li>
 
@@ -259,139 +267,218 @@
                         <a href="#"><i class="mdi mdi-email-outline"></i>板块全景</a>
                         <ul class="submenu">
                             <li class="has-submenu">
-                                <a href="#">场内动态全景</a>
+                                <a href="ui-buttons.html"><i class="mdi mdi-orbit"></i> 场内动态全景</a>
                                 <ul class="submenu">
-                                    <li><a href="">资金流向全景</a></li>
-                                    <li><a href="">交易活跃全景</a></li>
-                                    <li><a href="">走势变化全景</a></li>
-                                    <li><a href="">市值分布全景</a></li>
-                                    <li><a href="">动态估值全景</a></li>
+                                    <li><a href="{{ url_for('main.zjlxqj') }}">资金流向全景</a></li>
+                                    <li><a href="{{ url_for('main.jyhyqj') }}">交易活跃全景</a></li>
+                                    <li><a href="{{ url_for('main.zsbhqj') }}">走势变化全景</a></li>
+                                    <li><a href="{{ url_for('main.szfbqj') }}">市值分布全景</a></li>
+                                    <li><a href="{{ url_for('main.dtgzqj') }}">动态估值全景</a></li>
                                 </ul>
                             </li>
                             <li class="has-submenu">
-                                <a href="#">场外动态全景</a>
+                                <a href="#"><i class="mdi mdi-compass"></i> 场外动态全景</a>
                                 <ul class="submenu">
-                                    <li><a href="">点击热度全景</a></li>
-                                    <li><a href="">股吧人气全景</a></li>
+                                    <li><a href="{{ url_for('main.djrdqj') }}">点击热度全景</a></li>
+                                    <li><a href="{{ url_for('main.gbrqqj') }}">股吧人气全景</a></li>
                                 </ul>
                             </li>
-                            <li><a href="">财务指标比较</a></li>
-                            <li><a href="">行情数据比较</a></li>
+                            <li class="has-submenu">
+                                <a href="{{ url_for('main.cwzbbj') }}"><i class="mdi mdi-finance"></i> 财务指标比较</a>
+                            </li>
+                            <li class="has-submenu">
+                                <a href="{{ url_for('main.hqsjbj') }}"><i class="mdi mdi-database"></i> 行情数据比较</a></a>
+                            </li>
                         </ul>
                     </li>
-
                     <li class="has-submenu">
                         <a href="#"><i class="mdi mdi-cube-outline"></i>个股排序</a>
                         <ul class="submenu">
                             <li class="has-submenu">
-                                <a href="#">走势预测排序</a>
+                                <a href="#"><i class="mdi mdi-chart-line"></i> 走势预测排序</a>
                                 <ul class="submenu">
-                                    <li><a href="">买点统计排序</a></li>
-                                    <li><a href="">相似走势排序</a></li>
-                                    <li><a href="">相关走势排序</a></li>
-                                    <li><a href="">自身重现排序</a></li>
-                                    <li><a href="">长期趋势排序</a></li>
+                                    <li><a href="chart-flot.html">买点统计排序</a></li>
+                                    <li><a href="chart-chartist.html">相似走势排序</a></li>
+                                    <li><a href="chart-chartjs.html">相关走势排序</a></li>
+                                    <li><a href="chart-knob.html">自身重现排序</a></li>
+                                    <li><a href="chart-sparkline.html">长期趋势排序</a></li>
                                 </ul>
                             </li>
                             <li class="has-submenu">
-                                <a href="#">股票估值排序</a>
+                                <a href="#"><i class="mdi mdi-view-carousel"></i> 股票估值排序</a>
                                 <ul class="submenu">
-                                    <li><a href="">基于相似收益</a></li>
-                                    <li><a href="">基于行业均值</a></li>
-                                    <li><a href="">各行业平均PE及前三</a></li>
+                                    <li><a href="form-elements.html">基于相似收益</a></li>
+                                    <li><a href="form-advanced.html">基于行业均值</a></li>
+                                    <li><a href="form-validation.html">各行业平均PE及前3</a></li>
                                 </ul>
                             </li>
                             <li class="has-submenu">
-                                <a href="#">资金流向排序</a>
+                                <a href="#"><i class="mdi mdi-cash"></i> 资金流向排序</a>
                                 <ul class="submenu">
-                                    <li><a href="">主力资金排序</a></li>
-                                    <li><a href="">主力净流入排序</a></li>
-                                    <li><a href="">主力控盘能力排序</a></li>
+                                    <li><a href="tables-basic.html">主力资金排序</a></li>
+                                    <li><a href="tables-datatable.html">主力净流入排序</a></li>
+                                    <li><a href="tables-responsive.html">主力控盘能力排序</a></li>
                                 </ul>
                             </li>
                             <li class="has-submenu">
-                                <a href="#">筹码分布排序</a>
+                                <a href="#"><i class="mdi mdi-database"></i> 筹码分布排序</a>
                                 <ul class="submenu">
-                                    <li><a href="">成本偏离排序</a></li>
-                                    <li><a href="">获利比例排序</a></li>
-                                    <li><a href="">筹码集中度排序</a></li>
+                                    <li><a href="icons-materialdesign.html">成本偏离排序</a></li>
+                                    <li><a href="icons-simpleline.html">获利比例排序</a></li>
+                                    <li><a href="icons-dripicons.html">筹码集中度排序</a></li>
                                 </ul>
                             </li>
                             <li class="has-submenu">
-                                <a href="#">规则统计排序</a>
+                                <a href="#"><i class="mdi mdi-usb"></i> 规则统计排序</a>
                                 <ul class="submenu">
-                                    <li><a href="">联动涨跌排序</a></li>
-                                    <li><a href="">幅值组合排序</a></li>
-                                    <li><a href="">涨跌幅排序</a></li>
-                                    <li><a href="">走势形态匹配</a></li>
+                                    <li><a href="maps-google.html">联动涨跌排序</a></li>
+                                    <li><a href="maps-vector.html">幅值组合排序</a></li>
+                                    <li><a href="maps-google.html">涨跌幅排序</a></li>
+                                    <li><a href="maps-vector.html">走势形态匹配</a></li>
                                 </ul>
                             </li>
                             <li class="has-submenu">
-                                <a href="#">人气热度排序</a>
+                                <a href="#"><i class="mdi mdi-fire"></i> 人气热度排序</a>
                                 <ul class="submenu">
-                                    <li><a href="">股吧人气排序</a></li>
-                                    <li><a href="">研报热度排序</a></li>
-                                    <li><a href="">自选热度排序</a></li>
-                                    <li><a href="">点击热度排序</a></li>
+                                    <li><a href="maps-google.html">股吧人气排序</a></li>
+                                    <li><a href="maps-vector.html">研报热度排序</a></li>
+                                    <li><a href="maps-google.html">自选热度排序</a></li>
+                                    <li><a href="maps-vector.html">点击热度排序</a></li>
                                 </ul>
                             </li>
                         </ul>
                     </li>
 
                     <li class="has-submenu">
-                        <a href="#"><i class="mdi mdi-file-multiple"></i>选股策略</a>
+                        <a href="#"><i class="mdi mdi-buffer"></i>选股策略</a>
                         <ul class="submenu">
                             <li class="has-submenu">
-                                <a href="#">超短线攻略</a>
+                                <a href="#"><i class="mdi mdi-gauge-empty"></i> 超短线攻略</a>
                                 <ul class="submenu">
-                                    <li><a href="">买卖点突变</a></li>
-                                    <li><a href="">下影线逆袭</a></li>
-                                    <li><a href="">深跌偏离反弹</a></li>
-                                    <li><a href="">均线拐头发散</a></li>
-                                    <li><a href="">综合得分剧升</a></li>
+                                    <li><a href="chart-flot.html">买卖点突变</a></li>
+                                    <li><a href="chart-chartist.html">下影线逆袭</a></li>
+                                    <li><a href="chart-chartjs.html">深跌偏离反弹</a></li>
+                                    <li><a href="chart-knob.html">均线拐头发散</a></li>
+                                    <li><a href="chart-sparkline.html">综合得分剧升</a></li>
                                 </ul>
                             </li>
                             <li class="has-submenu">
-                                <a href="#">短线攻略</a>
+                                <a href="#"><i class="mdi mdi-gauge"></i> 短线攻略</a>
                                 <ul class="submenu">
-                                    <li><a href="">资金关注重点</a></li>
-                                    <li><a href="">筹码集中拉升</a></li>
-                                    <li><a href="">强弱趋势转换</a></li>
-                                    <li><a href="">预测趋势抬头</a></li>
-                                    <li><a href="">量价步步高进</a></li>
+                                    <li><a href="form-elements.html">资金关注重点</a></li>
+                                    <li><a href="form-advanced.html">筹码集中拉升</a></li>
+                                    <li><a href="form-validation.html">强弱趋势转换</a></li>
+                                    <li><a href="form-advanced.html">预测趋势抬头</a></li>
+                                    <li><a href="form-validation.html">量价步步高进</a></li>
                                 </ul>
                             </li>
                             <li class="has-submenu">
-                                <a href="#">中长线攻略</a>
+                                <a href="#"><i class="mdi mdi-gauge-full"></i> 中长线攻略</a>
                                 <ul class="submenu">
-                                    <li><a href="">估值洼地</a></li>
-                                    <li><a href="">财务打分评级</a></li>
-                                    <li><a href="">多维综合得分</a></li>
+                                    <li><a href="tables-basic.html">估值洼地</a></li>
+                                    <li><a href="tables-datatable.html">财务打分评级</a></li>
+                                    <li><a href="tables-responsive.html">多维综合得分</a></li>
                                 </ul>
                             </li>
                             <li class="has-submenu">
-                                <a href="#">相似走势选股</a>
+                                <a href="#"><i class="mdi mdi-repeat"></i> 相似走势选股</a>
                                 <ul class="submenu">
-                                    <li><a href="">1日排序</a></li>
-                                    <li><a href="">2日排序</a></li>
-                                    <li><a href="">3日排序</a></li>
-                                    <li><a href="">1/2/3日合并排序</a></li>
-                                    <li><a href="">30日排序</a></li>
+                                    <li><a href="icons-materialdesign.html">1日排序</a></li>
+                                    <li><a href="icons-materialdesign.html">2日排序</a></li>
+                                    <li><a href="icons-materialdesign.html">3日排序</a></li>
+                                    <li><a href="icons-simpleline.html">1/2/3日合并排序</a></li>
+                                    <li><a href="icons-dripicons.html">30日排序</a></li>
                                 </ul>
                             </li>
                             <li class="has-submenu">
-                                <a href="#">相关走势选股</a>
+                                <a href="#"><i class="mdi mdi-twitter-retweet"></i> 相关走势选股</a>
                                 <ul class="submenu">
-                                    <li><a href="">1日排序</a></li>
-                                    <li><a href="">2日排序</a></li>
-                                    <li><a href="">3日排序</a></li>
-                                    <li><a href="">1/2/3日合并排序</a></li>
-                                    <li><a href="">30日排序</a></li>
+                                    <li><a href="icons-materialdesign.html">1日排序</a></li>
+                                    <li><a href="icons-materialdesign.html">2日排序</a></li>
+                                    <li><a href="icons-materialdesign.html">3日排序</a></li>
+                                    <li><a href="icons-simpleline.html">1/2/3日合并排序</a></li>
+                                    <li><a href="icons-dripicons.html">30日排序</a></li>
                                 </ul>
                             </li>
-
                         </ul>
                     </li>
+
+                    <li class="has-submenu">
+                        <a href="#"><i class="mdi mdi-file-multiple"></i>用户中心</a>
+                        <ul class="submenu">
+                            <li class="has-submenu"><a href="pages-invoice.html"><i class="mdi mdi-account"></i> 账号管理</a></li>
+                            <li class="has-submenu"><a href="pages-pricing.html"><i class="mdi mdi-basket"></i> 自选股</a></li>
+                            <li class="has-submenu">
+                                <a href="#"><i class="mdi mdi-chess-king"></i> VIP股权奖励计划</a>
+                                <ul class="submenu">
+                                    <li><a href="icons-materialdesign.html">计划说明</a></li>
+                                    <li><a href="icons-materialdesign.html">转发推广</a></li>
+                                    <li><a href="icons-materialdesign.html">成果跟踪</a></li>
+                                    <li><a href="icons-simpleline.html">我的股权</a></li>
+                                </ul>
+                            </li>
+                            <li class="has-submenu">
+                                <a href="#"><i class="mdi mdi-chess-queen"></i> VIP畅通无阻计划</a>
+                                <ul class="submenu">
+                                    <li><a href="icons-materialdesign.html">计划说明</a></li>
+                                    <li><a href="icons-materialdesign.html">视频分享</a></li>
+                                    <li><a href="icons-materialdesign.html">文章分享</a></li>
+                                    <li><a href="icons-simpleline.html">我的权限</a></li>
+                                </ul>
+                            </li>
+                            <li class="has-submenu"><a href="pages-starter.html"><i class="mdi mdi-credit-card"></i> 在线支付</a></li>
+                            <li class="has-submenu"><a href="pages-timeline.html"><i class="mdi mdi-file-document"></i> 意见反馈</a></li>
+                            <li class="has-submenu"><a href="pages-faq.html"><i class="mdi mdi-message-processing"></i> 我的消息</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="has-submenu">
+                        <a href="#"><i class="mdi mdi-fire"></i>支持帮助</a>
+                        <ul class="submenu">
+                            <li class="has-submenu"><a href="pages-faq.html"><i class="mdi mdi-contact-mail"></i> 第三方登录</a></li>
+                            <li class="has-submenu">
+                                <a href="#"><i class="mdi mdi-view-list"></i>功能详解</a>
+                                <ul class="submenu megamenu">
+                                    <li>
+                                        <ul>
+                                            <li><a href="chart-flot.html">功能详解</a></li>
+                                            <li><a href="chart-chartist.html">B/S买卖点详解</a></li>
+                                            <li><a href="chart-chartjs.html">近期涨跌预测详解</a></li>
+                                            <li><a href="chart-knob.html">短期相似走势详解</a></li>
+                                            <li><a href="chart-sparkline.html">短期相关走势详解</a></li>
+                                            <li><a href="chart-flot.html">长期强弱预测详解</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <ul>
+                                            <li><a href="chart-chartist.html">自身历史重现详解</a></li>
+                                            <li><a href="chart-chartjs.html">联动涨跌规则详解</a></li>
+                                            <li><a href="chart-knob.html">幅值组合统计详解</a></li>
+                                            <li><a href="chart-sparkline.html">幅值组合关联详解</a></li>
+                                            <li><a href="chart-chartjs.html">涨跌幅统计详解</a></li>
+                                            <li><a href="chart-knob.html">同涨跌股票详解</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <ul>
+                                            <li><a href="chart-sparkline.html">同走势股票</a></li>
+                                            <li><a href="chart-knob.html">股票估值详解</a></li>
+                                            <li><a href="chart-sparkline.html">资金流向详解</a></li>
+                                            <li><a href="chart-chartjs.html">筹码分布详解</a></li>
+                                            <li><a href="chart-knob.html">全局指南详解</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="has-submenu"><a href="pages-faq.html"><i class="mdi mdi-comment-question"></i> 常见问题</a></li>
+                            <li class="has-submenu"><a href="pages-faq.html"><i class="mdi mdi-notebook"></i> 实战系列（原创）</a></li>
+                            <li class="has-submenu"><a href="pages-faq.html"><i class="mdi mdi-video"></i> 视频分享</a></li>
+                            <li class="has-submenu"><a href="pages-faq.html"><i class="mdi mdi-clipboard-text"></i> 文章分享</a></li>
+                            <li class="has-submenu"><a href="pages-faq.html"><i class="mdi mdi-blur-linear"></i> 格子股权</a></li>
+                            <li class="has-submenu"><a href="pages-faq.html"><i class="mdi mdi-account-group"></i> 关于我们</a></li>
+                        </ul>
+                    </li>
+
                 </ul>
                 <!-- End navigation menu -->
 
@@ -406,21 +493,21 @@
 <div class="wrapper">
     <div class="container-fluid">
         <!-- Page title box -->
-{% block pagetitle %}
-        <div class="page-title-alt-bg"></div>
-        <div class="page-title-box">
-            <ol class="breadcrumb float-right">
-                <li class="breadcrumb-item"><a href="javascript:void(0);">Greeva</a></li>
-                <li class="breadcrumb-item"><a href="javascript:void(0);">Pages</a></li>
-                <li class="breadcrumb-item active">Starter</li>
-            </ol>
-            <h4 class="page-title">Starter</h4>
-        </div>
-{% endblock %}
+        {% block pagetitle %}
+            <div class="page-title-alt-bg"></div>
+            <div class="page-title-box">
+                <ol class="breadcrumb float-right">
+                    <li class="breadcrumb-item"><a href="javascript:void(0);">Greeva</a></li>
+                    <li class="breadcrumb-item"><a href="javascript:void(0);">Pages</a></li>
+                    <li class="breadcrumb-item active">Starter</li>
+                </ol>
+                <h4 class="page-title">Starter</h4>
+            </div>
+        {% endblock %}
         <!-- End page title box -->
 
-{% block content %}
-{% endblock %}
+        {% block content %}
+        {% endblock %}
 
     </div> <!-- end container -->
 </div>
@@ -564,11 +651,13 @@
 <!-- jQuery  -->
 <script src="{{ url_for("static",filename="libs/jquery/jquery.min.js") }}"></script>
 <script src="{{ url_for("static",filename="libs/bootstrap/js/bootstrap.bundle.min.js") }}"></script>
+<script src="{{ url_for("static",filename="libs/bootstrap/js/bootstrap.min.js") }}"></script>
 <script src="{{ url_for("static",filename="libs/jquery-slimscroll/jquery.slimscroll.min.js") }}"></script>
 
 <!-- App js -->
 <script src="{{ url_for("static",filename="js/jquery.core.js") }}"></script>
 <script src="{{ url_for("static",filename="js/jquery.app.js") }}"></script>
+
 
 <!-- Extend Scripts  -->
 {% block scripts %}
