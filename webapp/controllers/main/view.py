@@ -43,3 +43,39 @@ def database():
 @main.route('test',methods=['GET'])
 def test():
     return render_template('stock_base.html')
+
+@main.route('zjlxqj',methods=['GET'])
+def zjlxqj():
+    return render_template('main/bkqj/cndtqj_zjlxqj.html')
+
+@main.route('jyhyqj',methods=['GET'])
+def jyhyqj():
+    return render_template('main/bkqj/cndtqj_jyhyqj.html')
+
+@main.route('zsbhqj',methods=['GET'])
+def zsbhqj():
+    return render_template('main/bkqj/cndtqj_zsbhqj.html')
+
+@main.route('szfbqj',methods=['GET'])
+def szfbqj():
+    return render_template('main/bkqj/cndtqj_szfbqj.html')
+
+@main.route('dtgzqj',methods=['GET'])
+def dtgzqj():
+    return render_template('main/bkqj/cndtqj_dtgzqj.html')
+
+@main.route('djrdqj',methods=['GET'])
+def djrdqj():
+    return render_template('main/bkqj/cwdtqj_djrdqj.html')
+
+@main.route('gbrqqj',methods=['GET'])
+def gbrqqj():
+    return render_template('main/bkqj/cwdtqj_gbrqqj.html')
+
+@main.route('cwzbbj',methods=['GET'])
+def cwzbbj():
+    return render_template('main/bkqj/cwzbbj.html')
+
+@main.route('hqsjbj',methods=['GET'])
+def hqsjbj():
+    return render_template('main/bkqj/hqsjbj.html')
